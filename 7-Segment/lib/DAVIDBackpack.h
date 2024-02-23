@@ -2,7 +2,6 @@
 #define _DAHT16k33_H
 
 #include <cstddef> // NULL, size_t 사용
-#include <linux/i2c-dev.h>
 #include <sys/ioctl.h> // 하드웨어의 제어와 상태정보를 얻음
 #include <cstdlib> // exit(), abort(), atexit()
 #include <cstdio> // c언어의 stdio.h와 같음
@@ -11,7 +10,12 @@
 #include <errno.h>
 #include <stdint.h> // uint8_t 같은 자료형을 사용 가능
 
+extern "C"{
+	#include <linux/i2c-dev.h>
+	#include <i2c/smbus.h>
+}
 
+#define SEVENSEG_DIGITS 5
 
 #define DEC 10
 #define HEX 16
